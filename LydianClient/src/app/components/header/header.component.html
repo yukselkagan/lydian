@@ -1,0 +1,88 @@
+<div class="container-fluid py-2" style="background-color: #d4b200">
+  <div class="row d-flex align-items-center">
+    <div class="col-md-4 d-flex align-items-end">
+      <div class="fs-2 me-3">
+        <a routerLink="/" class="non-decorated-link">Lydian</a>
+      </div>
+
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link link-text-black cursor-pointer" aria-current="page" (click)="openSidebar()"
+            >
+            <i class="bi bi-grid-3x3-gap-fill"></i>
+            All
+            </a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-text-black" routerLink="featured" >Featured</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-text-black" routerLink="orders" >Orders</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <form class="d-flex" #searchForm="ngForm" (ngSubmit)="onSearch()" >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          style="width: 100%"
+          aria-label="Search"
+          name="searchInput"
+          [(ngModel)]="searchInput"
+          #sc="ngModel"
+        />
+        <button
+          class="btn btn-dark search-button-header"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+
+    <div class="col-md-4 d-flex justify-content-end align-items-center">
+      <div class="d-flex account-group">
+        <div class="dropdown">
+          <button
+            class="btn btn-light dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span *ngIf="!commonInformation.isAuthenticated"> Account </span>
+            <span *ngIf="commonInformation.isAuthenticated" class="testu" >
+              Welcome {{ commonInformation.email }}</span
+            >
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <ng-container *ngIf="!commonInformation.isAuthenticated">
+              <li>
+                <a class="dropdown-item" routerLink="login">Login</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="register">Register</a>
+              </li>
+            </ng-container>
+
+            <ng-container *ngIf="commonInformation.isAuthenticated">
+              <li>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+
+      <i class="bi bi-cart-fill fs-2 ms-4 cursor-pointer" routerLink="cart"></i>
+
+    </div>
+  </div>
+</div>

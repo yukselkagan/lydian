@@ -1,0 +1,38 @@
+
+<div class="container mt-3" >
+
+  <ng-container *ngFor="let item of orders" >
+
+    <div class="border p-2" >
+      <h3>
+        Order {{item['orderId']}}
+      </h3>
+      <div>
+        <div>
+          Total Price: {{item['totalPrice']}} $
+        </div>
+        <div>
+          Items: {{item['itemCount']}}
+        </div>
+        <div [class]=" {'text-danger': !item['paymentStatus'], 'text-success': item['paymentStatus'] } " >
+          Payment: {{item['paymentStatus']}}
+        </div>
+
+
+        <div (click)="payOrder(item['orderId'])" *ngIf="!item['paymentStatus']" >
+          <button class="btn btn-success mt-2" >Complete Payment</button>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+  </ng-container>
+
+
+</div>
+
+
+

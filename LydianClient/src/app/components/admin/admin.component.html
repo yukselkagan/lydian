@@ -1,0 +1,91 @@
+
+
+<div class="container mt-5" >
+  <div class="row" >
+    <div class="col-sm-8 mx-auto" >
+
+      <form [formGroup]="productForm" (ngSubmit)="submitProductForm()" >
+        <div class="mb-3" >
+          <label class="form-label" for="productNameInput" >Product Name</label>
+          <input formControlName="productName" type="text" class="form-control" id="productNameInput" >
+          <div class="form-text" >
+            Minimum 3, maximum 20 length
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="productForm.controls['productName'].invalid
+            && (productForm.controls['productName'].touched || productForm.controls['productName'].dirty) " >
+            <ng-container *ngIf="productForm.controls['productName'].errors?.['required']" >
+              Need product name
+            </ng-container>
+            <ng-container *ngIf="productForm.controls['productName'].errors?.['minlength']
+              ||  productForm.controls['productName'].errors?.['maxlength']" >
+              Not in range
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="mb-3" >
+          <label class="form-label" for="priceInput" >Price</label>
+          <input formControlName="price" type="number" class="form-control" id="priceInput" min="0.1" step="0.1" value="0.5" >
+          <div class="form-text" >
+            Must be between 0.1-1000 Dolar
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="productForm.controls['price'].invalid &&
+            (productForm.controls['price'].touched || productForm.controls['price'].dirty )" >
+            <ng-container *ngIf="productForm.controls['price'].errors?.['required']  " >
+              Need price
+            </ng-container>
+            <ng-container *ngIf="productForm.controls['price'].errors?.['min']
+              || productForm.controls['price'].errors?.['max'] " >
+              Not in range
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="mb-3" >
+          <label class="form-label" for="descriptionInput" >Description</label>
+          <textarea formControlName="description" class="form-control" rows="3" id="descriptionInput" style="resize: none;" ></textarea>
+          <div class="form-text" >
+            Information about product
+          </div>
+          <div class="form-text text-danger" *ngIf="productForm.controls['description'].invalid
+            && (productForm.controls['description'].touched || productForm.controls['description'].dirty ) " >
+            <ng-container *ngIf=" productForm.controls['description'].errors?.['required'] " >
+              Need information about product
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="mb-3" >
+          <select class="form-select" formControlName="categoryId" >
+            <option value="1" >Furniture</option>
+            <option value="2" >Electronics</option>
+            <option value="3" >Clothes</option>
+          </select>
+          <div class="form-text" *ngIf="productForm.controls['categoryId'].invalid
+            && (productForm.controls['categoryId'].touched || productForm.controls['categoryId'].dirty )" >
+            Invalid category
+          </div>
+        </div>
+
+        <div class="mb-3" >
+          <label class="form-label" for="imageInput" >Product Image</label>
+          <input (change)="onFileChange($event)" type="file" class="form-control" id="imageInput" >
+        </div>
+        <div class="form-text text-danger" *ngIf="productImage == undefined && fileInputTouched" >
+          Need product image
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mt-3 float-end" >
+          Create Product
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+</div>

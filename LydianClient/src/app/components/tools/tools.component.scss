@@ -1,0 +1,50 @@
+
+
+.lydian-sidebar{
+  background-color: #f1f1f1;
+  height: 100%;
+  width: 0px;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: auto;
+  //display: none;
+
+  transition: width 0.10s linear;
+
+}
+
+.sidebar-header{
+  background-color: #7d6900;
+  color: white;
+  font-size: 22px;
+}
+
+.sidebar-show{
+  //display: block;
+  width: 250px;
+
+  transition: width 0.10s linear;
+}
+
+.lydian-sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.lydian-sidebar a.active {
+  background-color: #d4b200;
+  color: white;
+}
+
+.lydian-sidebar a:hover:not(.active) {
+  background-color: #d4b200;
+  color: white;
+}

@@ -1,0 +1,29 @@
+
+
+
+.link-text-black{
+  color : black;
+}
+
+.non-decorated-link{
+  color: black;
+  text-decoration: none;
+}
+
+.account-group{
+  @media screen and (min-width: 768px) {
+    justify-content: end;
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.search-button-header{
+  @media screen and (max-width: 768px) {
+    background-color: grey;
+  }
+}
+
+
+

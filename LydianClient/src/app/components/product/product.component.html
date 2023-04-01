@@ -1,0 +1,47 @@
+
+<div class="container-fluid mt-3" >
+
+  <div class="row" >
+    <div class="col-sm-5 text-center" >
+      <img [src]=" processImagePath(product.image) " height="500px" >
+    </div>
+    <div class="col-sm-5 " >
+      <h2>{{product.productName}}</h2>
+      <div style="font-weight: bold; font-size: 18px;" >
+        {{product.price}} $
+      </div>
+      <hr>
+      <div>
+        {{product.description}}
+      </div>
+
+    </div>
+    <div class="col-sm-2 border border-1" >
+      <div>
+        Unit Price: {{product.price}} $
+      </div>
+      <div class="mt-1 mb-2" >
+        <label for="quantitySelect">
+          Selected Quantity
+        </label>
+        <select class="form-select w-50" id="quantitySelect" [(ngModel)]="selectedQuantity"
+          (ngModelChange)="changeQuantity($event)" >
+          <option *ngFor="let item of createForLoopArray(20); let index = index" [value]="index+1" >
+            {{index + 1}}
+          </option>
+
+        </select>
+      </div>
+      <div>
+        Total Price: {{totalPrice}} $
+      </div>
+
+      <button class="btn btn-success w-100 mt-3" (click)="addToCart()" >
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+
+</div>
+

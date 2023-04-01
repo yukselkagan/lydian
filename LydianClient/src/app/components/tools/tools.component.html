@@ -1,0 +1,32 @@
+
+<div class="lydian-sidebar" #lydianSidebar >
+  <div class="d-flex py-1 sidebar-header" >
+    <div class="px-2" >
+      Sidebar
+    </div>
+    <div class="ms-auto px-2 cursor-pointer" (click)="closeSidebar()" >
+      <i class="bi bi-x"></i>
+    </div>
+  </div>
+  <a href="category/furniture">Furniture</a>
+  <a href="category/electronics">Electronics</a>
+  <a href="category/clothes">Clothes</a>
+  <a class="cursor-pointer" style="font-weight: bold;" (click)="navigateWithSidebar('admin')" >Admin Page</a>
+</div>
+
+
+
+
+<div id="generalToast" class="toast align-items-center text-white bg-primary toast-bottom-right mb-3 me-3 "
+  role="alert" aria-live="assertive"
+  aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body" id="generalToastText" >
+    Error
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row " >
+    <div class="col-sm-6 border p-3 mt-5 mx-auto" >
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" >
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="emailInput"
+            aria-describedby="emailHelp"
+            formControlName="email"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="loginForm.controls['email'].invalid
+              && (loginForm.controls['email'].dirty
+              || loginForm.controls['email'].touched)"
+            >
+            Need email
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="passwordInput"
+            formControlName="password"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="loginForm.controls['password'].invalid
+              && (loginForm.controls['password'].dirty
+              || loginForm.controls['password'].touched)"
+            >
+            Need password
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lydian">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

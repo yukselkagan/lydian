@@ -1,0 +1,78 @@
+<div class="container mt-2" >
+  <div class="row" >
+
+    <div class="col-sm-8 border" >
+      <h2>
+        Shopping Cart
+      </h2>
+      <hr>
+
+      <div>
+
+        <ng-container *ngFor="let cartItem of cartItems" >
+          <div class="row " >
+            <div class="col-sm-4" >
+              <img [src]="processImagePath(cartItem.product.image)" height="180px" width="180px"  >
+            </div>
+            <div class="col-sm-4" >
+              <div>
+                {{cartItem.product.productName}}
+              </div>
+              <div>
+                Amount: {{cartItem.quantity}}
+              </div>
+              <div>
+                Unit Price: {{cartItem.product.price}}
+              </div>
+              <div>
+                Total Price: {{cartItem.product.price * cartItem.quantity}}
+              </div>
+              <button class="btn btn-danger mt-2" >
+                Remove from Cart
+              </button>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="cartItems.length == 0" >
+          Cart is empty
+        </ng-container>
+
+
+
+
+
+      </div>
+
+    </div>
+
+    <div class="col-sm-4" >
+      <div class="px-3 pb-3 border" >
+        <h2>
+          Summary
+        </h2>
+        <hr>
+        <div>
+          Items : {{productsPrice}} $
+        </div>
+        <div>
+          Delivery : {{deliveryPrice}} $
+        </div>
+        <div class="mt-2" style="font-weight: bold;" >
+          Order Total: {{totalPrice}} $
+        </div>
+
+        <hr>
+
+
+        <button class="btn btn-success" (click)="placeOrder()" >
+          Place Order
+        </button>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
